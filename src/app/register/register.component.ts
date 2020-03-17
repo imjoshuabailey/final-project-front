@@ -21,17 +21,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   signUp() {
-    // this._userService.registerUser(this.form).subscribe((res: any) => {
-    //   console.log(res);
-    //   sessionStorage.setItem('token', res.token);
-    //   sessionStorage.setItem('userId', res.userId);
-    //   this._userService.firstName = res.firstName;
-    //   this._userService.isLoggedIn = true;
-    //   this.goToDash();
-    // })
+    this._userService.registerUser(this.form).subscribe((res: any) => {
+      sessionStorage.setItem('token', res.token);
+      sessionStorage.setItem('userId', res.userId);
+      this._userService.firstName = res.firstName;
+      this._userService.isLoggedIn = true;
+      this.goToDash();
+    })
   }
 
   goToDash() {
-    // this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
   }
 }
