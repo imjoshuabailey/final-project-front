@@ -16,7 +16,13 @@ export class UserService {
   firstName: String;
 
   registerUser(userCredentials) {
-    return this._http.post(`${this.baseUrl}${this.appUserUrl}`, userCredentials)
+    return this._http.post(`${this.baseUrl}${this.appUserUrl}`, userCredentials).subscribe((res: any) => {
+      sessionStorage.setItem('token', res.token);
+      sessionStorage.setItem('userId', res.userId);
+      this.firstName = res.firstName;
+      this.isLoggedIn = true;
+      this.goToDash();
+    })
   };
 
   loginUser(userCredentials) {
