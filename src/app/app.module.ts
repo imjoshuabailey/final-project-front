@@ -5,10 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './register/register.component';
+import { UserService } from './user.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClarityModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
