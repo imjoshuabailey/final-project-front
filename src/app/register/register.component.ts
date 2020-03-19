@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service'
-import { Router } from '@angular/router'
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +8,7 @@ import { Router } from '@angular/router'
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private _userService: UserService, private router: Router) { }
+  constructor(private _userService: UserService) { }
 
   form = {
     firstName: null,
@@ -24,7 +23,5 @@ export class RegisterComponent implements OnInit {
     this._userService.registerUser(this.form)
   }
 
-  goToDash() {
-    this.router.navigate(['/home']);
-  }
+ 
 }
