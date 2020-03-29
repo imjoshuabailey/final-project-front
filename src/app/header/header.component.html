@@ -32,32 +32,29 @@
         </div>
         <nav *ngIf="this.browseClicked == true" class="sidenav">
             <section class="sidenav-content">
-                <a href="..." class="nav-link active">
+                <!-- <a href="..." class="nav-link active">
                     Nav Element 1
                 </a>
                 <a href="..." class="nav-link">
                     Nav Element 2
-                </a>
+                </a> -->
                 <section class="nav-group collapsible">
                     <input id="tabexample1" type="checkbox">
-                    <label for="tabexample1">Collapsible Nav Element</label>
-                    <ul class="nav-list">
-                        <li><a class="nav-link">Link 1</a></li>
-                        <li><a class="nav-link">Link 2</a></li>
+                    <label for="tabexample1">Genres</label>
+                    <ul class="nav-list" *ngFor="let genre of this._movieService.genres">
+                        <li><a class="nav-link" (click)="selectGenre(genre.id)">{{genre.name}}</a></li>
+                        
                     </ul>
                 </section>
-                <section class="nav-group">
+                <!-- <section class="nav-group collapsible">
                     <input id="tabexample2" type="checkbox">
                     <label for="tabexample2">Default Nav Element</label>
                     <ul class="nav-list">
                         <li><a class="nav-link">Link 1</a></li>
                         <li><a class="nav-link">Link 2</a></li>
-                        <li><a class="nav-link">Link 3</a></li>
-                        <li><a class="nav-link">Link 4</a></li>
-                        <li><a class="nav-link">Link 5</a></li>
-                        <li><a class="nav-link">Link 6</a></li>
+                        
                     </ul>
-                </section>
+                </section> -->
             </section>
         </nav>
     </div>

@@ -15,14 +15,9 @@ export class MainComponent implements OnInit {
   }
   
   imageUrl = "https://image.tmdb.org/t/p/w500"
-  popularMovies: any;
+  
 
   popMovies() {
-    this._movieService.getPopular().subscribe((res: any) => {
-      this.popularMovies = res.results;
-      console.log(this.popularMovies)
-    }, err => {
-      //handle errors
-    })
+    this._movieService.getPopular()
   }
 }

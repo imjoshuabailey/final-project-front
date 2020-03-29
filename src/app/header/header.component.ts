@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../user.service"
+import { MovieService } from '../movie.service'
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,10 @@ import { UserService } from "../user.service"
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public _userService: UserService) { }
+  constructor(public _userService: UserService, public _movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.showGenre();
   }
 
   userName = this._userService.firstName
@@ -23,5 +25,13 @@ export class HeaderComponent implements OnInit {
       return this.browseClicked = false;
     }
 
+  }
+
+  showGenre() {
+    this._movieService.getGenre()
+  }
+
+  selectGenre(genreId) {
+    this._movieService.displaySelectedGenre(genreId);
   }
 }
