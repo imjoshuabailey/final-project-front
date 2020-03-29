@@ -1,7 +1,26 @@
-<h1>Sign up</h1>
 
-<input type="text" name="firstName" placeholder="First Name" [(ngModel)]="form.firstName">
-<input type="text" name="lastName" placeholder="Last Name" [(ngModel)]="form.lastName" >
-<input type="text" name="email" placeholder="Email" [(ngModel)]="form.email" >
-<input type="password" name="password" placeholder="Password" [(ngModel)]="form.password">
-<button type="submit" (click)="signUp()" class="btn btn-primary">Sign Up</button>
+
+<div class="container">
+    <form class="login">
+        <section class="title">
+            <h3>Register</h3>
+        </section>
+        <div class="login-group">
+            <clr-input-container>
+                <input type="text" name="firstName" placeholder="First Name" clrInput [(ngModel)]="form.firstName">
+            </clr-input-container>
+            <clr-input-container>
+                <input type="text" name="lastName" placeholder="Last Name" clrInput [(ngModel)]="form.lastName">
+            </clr-input-container>
+            <clr-input-container>
+                <input type="text" name="email" placeholder="Email" clrInput [(ngModel)]="form.email">
+            </clr-input-container>
+            <clr-password-container>
+                <input type="password" name="password" placeholder="Password" clrPassword [(ngModel)]="form.password">
+            </clr-password-container>
+            <br>
+            <button type="submit" (click)="signUp()" class="btn btn-primary">Submit</button>
+            <p>Already have an account? <a routerLink="/login">Sign In</a></p>
+        </div>
+    </form>
+</div>

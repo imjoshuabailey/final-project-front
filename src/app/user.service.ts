@@ -13,7 +13,7 @@ export class UserService {
   appUserUrl: string = "appUsers/"
   loginUrl: string = "appUsers/login"
   isLoggedIn = false;
-  firstName: String;
+  firstName: string;
 
   registerUser(userCredentials) {
     return this._http.post(`${this.baseUrl}${this.appUserUrl}`, userCredentials).subscribe((res: any) => {
@@ -27,17 +27,18 @@ export class UserService {
 
   loginUser(userCredentials) {
     return this._http.post(`${this.baseUrl}${this.loginUrl}`, userCredentials).subscribe((res: any) => {
+      console.log("res:", res)
       sessionStorage.setItem('token', res.token);
       sessionStorage.setItem('userId', res.userId);
-      this.firstName = res.firstName;
+      this.firstName = res.userData.firstName;
       this.isLoggedIn = true;
       this.goToDash();
     }, err => {
-        //code to run if login credentials fail
+        alert("incorrect email or passwrod")
     })
   };
 
   goToDash() {
-    this.router.navigate(['/home'])
+    this.router.navigate(['main'])
   }
 }

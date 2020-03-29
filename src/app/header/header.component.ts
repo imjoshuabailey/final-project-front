@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from "../user.service"
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _userService: UserService) { }
 
   ngOnInit(): void {
   }
 
+  userName = this._userService.firstName
+  browseClicked = false;
+
+  browseButton() {
+    if (this.browseClicked == false) {
+      return this.browseClicked = true;
+    } else {
+      return this.browseClicked = false;
+    }
+
+  }
 }

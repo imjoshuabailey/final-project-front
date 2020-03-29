@@ -1,0 +1,23 @@
+<div class="cards">
+    <div class="clr-row">
+        <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let item of popularMovies">
+            <div class="card">
+                <div class="card-block" >
+                    <div class="card-img">
+                       <img class="img" src="{{imageUrl + item.poster_path}}">
+                    </div>
+                    <div class="card-title cards">
+                        <br>
+                        <a title="{{item.title}}">{{item.title}}</a>
+                    </div>
+                    <div class="card-text">
+                    
+                    </div>
+                </div>
+                <!-- <div class="card-footer">
+                    
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
