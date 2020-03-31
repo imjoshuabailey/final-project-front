@@ -8,10 +8,14 @@
             </a>
         </div>
         <div class="header-nav">
-            <a class="active nav-link nav-text" (click)="browseButton()">Browse</a>
+            <a *ngIf="this._userService.isLoggedIn === false" class="nav-link nav-text" (click)="browseButton()">Browse</a>
+            <form *ngIf="this._userService.isLoggedIn === false" class="search">
+                    <a (click)="movieSearch()"><clr-icon shape="search"></clr-icon></a>
+                    <input  id="search_input" type="text" name="search_input" placeholder="Search for keywords..." [(ngModel)]="form.search">
+            </form>
         </div>
         <div class="header-actions">
-            <a *ngIf="this._userService.isLoggedIn === false" class="nav-link nav-text" routerLink="register">Sign Up</a>
+            <a *ngIf="this._userService.isLoggedIn === false" class="nav-link nav-text" routerLink="login">Sign In</a>
             <clr-dropdown>
                 <button *ngIf="this._userService.isLoggedIn === true" class="nav-text" clrDropdownTrigger aria-label="open user profile">
                     <clr-icon shape="user"></clr-icon>
@@ -19,7 +23,7 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                    <a href="..." clrDropdownItem>Preferences</a>
+                    <!-- <a href="..." clrDropdownItem>Preferences</a> -->
                     <a href="" clrDropdownItem>Log out</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
@@ -28,14 +32,12 @@
 
     <div class="content-container">
         <div class="content-area">
+            <h1 class="title">{{this._movieService.selectedGenre}}</h1>
             <router-outlet></router-outlet>
         </div>
         <nav *ngIf="this.browseClicked == true" class="sidenav">
             <section class="sidenav-content">
-                <!-- <a href="..." class="nav-link active">
-                    Nav Element 1
-                </a>
-                <a href="..." class="nav-link">
+                <!-- <a href="..." class="nav-link">
                     Nav Element 2
                 </a> -->
                 <section class="nav-group collapsible">
@@ -55,6 +57,9 @@
                         
                     </ul>
                 </section> -->
+                <a class="nav-link" (click)="viewPopMovies()">
+                    Popular Movies
+                </a>
             </section>
         </nav>
     </div>

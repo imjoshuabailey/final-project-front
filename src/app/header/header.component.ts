@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.showGenre();
   }
-
+  form = {
+    search: null,
+  };
   userName = this._userService.firstName
   browseClicked = false;
 
@@ -34,4 +36,13 @@ export class HeaderComponent implements OnInit {
   selectGenre(genreId) {
     this._movieService.displaySelectedGenre(genreId);
   }
+
+  viewPopMovies() {
+    this._movieService.getPopular()
+  }
+
+  movieSearch() {
+    this._movieService.searchMovies(this.form.search)
+  }
+
 }

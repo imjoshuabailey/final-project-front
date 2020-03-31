@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../movie.service'
+import { MovieService } from '../movie.service';
+import { UserService } from '../user.service'
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,7 @@ import { MovieService } from '../movie.service'
 })
 export class MainComponent implements OnInit {
 
-  constructor(public _movieService: MovieService) { }
+  constructor(public _movieService: MovieService, public _userService: UserService) { }
 
   ngOnInit(): void {
     this.popMovies();
