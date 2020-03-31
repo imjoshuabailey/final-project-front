@@ -9,9 +9,12 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './user.service';
+import { MovieService } from './movie.service'
+import { KeysService } from './keys.service';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component'
+import { MainComponent } from './main/main.component';
+import { ProfileComponent } from './profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { MainComponent } from './main/main.component'
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,11 @@ import { MainComponent } from './main/main.component'
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    MovieService,
+    KeysService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

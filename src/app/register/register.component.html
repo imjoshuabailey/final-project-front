@@ -7,19 +7,21 @@
         </section>
         <div class="login-group">
             <clr-input-container>
-                <input type="text" name="firstName" placeholder="First Name" clrInput [(ngModel)]="form.firstName">
+                <input type="text" name="firstName" placeholder="First Name*" clrInput [(ngModel)]="form.firstName">
             </clr-input-container>
             <clr-input-container>
-                <input type="text" name="lastName" placeholder="Last Name" clrInput [(ngModel)]="form.lastName">
+                <input type="text" name="lastName" placeholder="Last Name*" clrInput [(ngModel)]="form.lastName">
             </clr-input-container>
             <clr-input-container>
-                <input type="text" name="email" placeholder="Email" clrInput [(ngModel)]="form.email">
+                <input type="text" name="email" placeholder="Email*" clrInput [(ngModel)]="form.email">
             </clr-input-container>
             <clr-password-container>
-                <input type="password" name="password" placeholder="Password" clrPassword [(ngModel)]="form.password">
+                <input type="password" name="password" placeholder="Password*" clrPassword [(ngModel)]="form.password">
             </clr-password-container>
-            <br>
+            <p>* required</p>
+         
             <button type="submit" (click)="signUp()" class="btn btn-primary">Submit</button>
+            
             <p>Already have an account? <a routerLink="/login">Sign In</a></p>
         </div>
     </form>

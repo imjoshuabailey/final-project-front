@@ -22,6 +22,8 @@ export class UserService {
       this.firstName = res.firstName;
       this.isLoggedIn = true;
       this.goToDash();
+    }, err => {
+      alert("Please enter valid inforamtion")
     })
   };
 
