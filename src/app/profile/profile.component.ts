@@ -13,5 +13,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  imageUrl = "https://image.tmdb.org/t/p/w500"
 
 }
