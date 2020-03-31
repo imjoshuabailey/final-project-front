@@ -23,7 +23,7 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                    <a routerLink="main" clrDropdownItem>Profile</a>
+                    <a routerLink="profile" clrDropdownItem>Profile</a>
                     <a href="" clrDropdownItem>Log out</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
@@ -32,7 +32,6 @@
 
     <div class="content-container">
         <div class="content-area">
-            <h1 class="title">{{this._movieService.selectedGenre}}</h1>
             <router-outlet></router-outlet>
         </div>
         <nav *ngIf="this.browseClicked == true" class="sidenav">
