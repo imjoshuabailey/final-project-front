@@ -33,8 +33,8 @@ export class HeaderComponent implements OnInit {
     this._movieService.getGenre()
   }
 
-  selectGenre(genreId) {
-    this._movieService.displaySelectedGenre(genreId);
+  selectGenre(genreId, genreName) {
+    this._movieService.displaySelectedGenre(genreId, genreName);
   }
 
   viewPopMovies() {

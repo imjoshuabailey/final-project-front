@@ -34,19 +34,21 @@ export class MovieService {
     })
   }
 
-  displaySelectedGenre(genreId) {
+  displaySelectedGenre(genreId, genreName) {
     return this._http.get(`${this.baseUrl}/3/discover/movie?api_key=${this._keysService.api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`).subscribe((res: any) => {
       this.selectedMovies = res.results;
-      this.selectedGenre = this.selectedMovies.name
+      this.selectedGenre = genreName
       console.log('selected movies', this.selectedMovies)
     })
   }
 
   searchMovies(query) {
     return this._http.get(`${this.baseUrl}/3/search/movie?api_key=${this._keysService.api_key}&language=en-US&query=${query}&page=1&include_adult=false`).subscribe((res: any) => {
+      
       this.selectedMovies = res.results;
-      this.selectedGenre = query;
-      console.log(this.selectedMovies)
+      this.selectedGenre = "Searched results for: " + query;
+      console.log("query", this.selectedMovies)
+      
 
     })
   }

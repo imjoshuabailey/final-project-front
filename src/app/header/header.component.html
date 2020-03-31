@@ -8,8 +8,8 @@
             </a>
         </div>
         <div class="header-nav">
-            <a *ngIf="this._userService.isLoggedIn === false" class="nav-link nav-text" (click)="browseButton()">Browse</a>
-            <form *ngIf="this._userService.isLoggedIn === false" class="search">
+            <a *ngIf="this._userService.isLoggedIn === true" class="nav-link nav-text" (click)="browseButton()">Browse</a>
+            <form *ngIf="this._userService.isLoggedIn === true" class="search">
                     <a (click)="movieSearch()"><clr-icon shape="search"></clr-icon></a>
                     <input  id="search_input" type="text" name="search_input" placeholder="Search for keywords..." [(ngModel)]="form.search">
             </form>
@@ -23,7 +23,7 @@
                     <clr-icon shape="caret down"></clr-icon>
                 </button>
                 <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                    <!-- <a href="..." clrDropdownItem>Preferences</a> -->
+                    <a routerLink="main" clrDropdownItem>Profile</a>
                     <a href="" clrDropdownItem>Log out</a>
                 </clr-dropdown-menu>
             </clr-dropdown>
@@ -44,7 +44,7 @@
                     <input id="tabexample1" type="checkbox">
                     <label for="tabexample1">Genres</label>
                     <ul class="nav-list" *ngFor="let genre of this._movieService.genres">
-                        <li><a class="nav-link" (click)="selectGenre(genre.id)">{{genre.name}}</a></li>
+                        <li><a class="nav-link" (click)="selectGenre(genre.id, genre.name)">{{genre.name}}</a></li>
                         
                     </ul>
                 </section>
