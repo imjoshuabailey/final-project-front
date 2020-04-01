@@ -12,7 +12,14 @@ export class ProfileComponent implements OnInit {
   constructor(public _userService: UserService, public _movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.viewFavorites()
   }
-  imageUrl = "https://image.tmdb.org/t/p/w500"
+
+  currentUser = sessionStorage.getItem('userId')
+  
+
+  viewFavorites() {
+    this._movieService.listFavorites()
+  }
 
 }

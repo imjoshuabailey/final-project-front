@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { UserService } from '../user.service'
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-main',
@@ -14,11 +15,25 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.popMovies();
   }
-  
-  imageUrl = "https://image.tmdb.org/t/p/w500"
+
+  favorite = {
+    movieTitle: null,
+    imageUrl: null,
+    thirdPartyMovieId: null,
+    userId: null,
+  }
   
 
   popMovies() {
     this._movieService.getPopular()
+  }
+
+  favoriteButton(title, url, id) {
+    this.favorite.movieTitle = title;
+    this.favorite.imageUrl = url;
+    this.favorite.thirdPartyMovieId = id;
+    this.favorite.userId = sessionStorage.getItem('userId')
+    console.log("your favorite", this.favorite)
+    this._userService.newFavorite(this.favorite)
   }
 }

@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { KeysService } from './keys.service'
+import { UserService } from './user.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
 
-  constructor(public _http: HttpClient, private _keysService: KeysService) { }
+  constructor(public _http: HttpClient, private _keysService: KeysService, private _userService: UserService) { }
 
   baseUrl: string = "https://api.themoviedb.org"
+  imageUrl: string = "https://image.tmdb.org/t/p/w500"
   selectedMovies: any;
+  favoritedMovies: any;
   genres: any;
   selectedGenre: any;
   
@@ -36,6 +39,7 @@ export class MovieService {
 
   displaySelectedGenre(genreId, genreName) {
     return this._http.get(`${this.baseUrl}/3/discover/movie?api_key=${this._keysService.api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`).subscribe((res: any) => {
+      this._userService.goToDash();
       this.selectedMovies = res.results;
       this.selectedGenre = genreName
       console.log('selected movies', this.selectedMovies)
@@ -48,8 +52,12 @@ export class MovieService {
       this.selectedMovies = res.results;
       this.selectedGenre = "Searched results for: " + query;
       console.log("query", this.selectedMovies)
-      
+    })
+  }
 
+  listFavorites() {
+    return this._http.get(`${this._userService.backendUrl}/favorites`).subscribe((res: any) => {
+      this.selectedMovies = res
     })
   }
 
