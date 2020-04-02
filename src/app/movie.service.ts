@@ -16,6 +16,7 @@ export class MovieService {
   favoritedMovies: any;
   genres: any;
   selectedGenre: any;
+  firstLoad = false;
   
 
   // getMovies() {
@@ -23,6 +24,7 @@ export class MovieService {
   // }
   getPopular(){
     return this._http.get(`${this.baseUrl}/3/movie/popular?api_key=${this._keysService.api_key}&language=en-US&page=1`).subscribe((res: any) => {
+      this._userService.goToDash();
       this.selectedMovies = res.results;
       this.selectedGenre = "Popular Movies"
       console.log('popular movies', this.selectedMovies)
@@ -42,6 +44,7 @@ export class MovieService {
       this._userService.goToDash();
       this.selectedMovies = res.results;
       this.selectedGenre = genreName
+      
       console.log('selected movies', this.selectedMovies)
     })
   }
@@ -56,8 +59,10 @@ export class MovieService {
   }
 
   listFavorites() {
-    return this._http.get(`${this._userService.backendUrl}/favorites`).subscribe((res: any) => {
+    let userId = sessionStorage.getItem('userId')
+    return this._http.get(`${this._userService.backendUrl}${this._userService.appUserUrl}${userId}/favorites`).subscribe((res: any) => {
       this.selectedMovies = res
+      console.log(this.selectedMovies)
     })
   }
 
