@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
     } else {
       return this.browseClicked = false;
     }
+
   }
 
   showGenre() {

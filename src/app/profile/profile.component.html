@@ -2,15 +2,15 @@
     <h1 class="title">Your Favorites</h1>
     <div class="cards">
         <div class="clr-row">
-            <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let movie of this._movieService.selectedMovies">
-                <div class="card">
+            <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let item of this._movieService.selectedMovies">
+                <div  *ngIf="currentUser == item.userId" class="card">
                     <div class="card-block">
                         <div class="card-img">
-                            <img class="img" src="{{this._movieService.imageUrl + movie.imageUrl}}" alt="No image available">
+                            <img class="img" src="{{this._movieService.imageUrl + item.imageUrl}}" alt="No image available">
                         </div>
                         <div class="card-title cards">
                             <br>
-                            <a title="{{movie.movieTitle}}">{{movie.movieTitle}}</a>
+                            <a title="{{item.movieTitle}}">{{item.movieTitle}}</a>
                         </div>
 
                     </div>

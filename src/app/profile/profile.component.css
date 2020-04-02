@@ -1,9 +1,3 @@
-.cards {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow:ellipsis;
-}
-
 .title {
     text-align: center;
 }

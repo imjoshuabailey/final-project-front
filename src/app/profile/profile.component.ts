@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.viewFavorites()
   }
+
+  currentUser = sessionStorage.getItem('userId')
   
 
   viewFavorites() {
