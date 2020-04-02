@@ -56,4 +56,10 @@ export class UserService {
   goToProfile() {
     this.router.navigate(['profile'])
   }
+
+  checkLoggedIn() {
+    if(this.isLoggedIn == false) {
+      this.router.navigate(['main'])
+    }
+  }
 }

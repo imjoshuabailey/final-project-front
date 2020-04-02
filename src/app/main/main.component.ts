@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { UserService } from '../user.service'
-import { identifierModuleUrl } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-main',

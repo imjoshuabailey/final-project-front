@@ -1,4 +1,4 @@
-<div *ngIf="this._userService.isLoggedIn == true">
+<div *ngIf="this._userService.isLoggedIn == true; else this._userService.checkLoggedIn()">
     <h1 class="title">Your Favorites</h1>
     <div class="cards">
         <div class="clr-row">

@@ -4,5 +4,6 @@
 .image:hover {
     color: white;
 }
-
-
+.search_input {
+    width: 200px;
+}
