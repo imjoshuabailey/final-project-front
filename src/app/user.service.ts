@@ -69,14 +69,17 @@ export class UserService {
     })
   }
 
+  // navigates to 
   goToDash() {
     this.router.navigate(['main'])
   }
 
+  // navigates to profile page
   goToProfile() {
     this.router.navigate(['profile'])
   }
 
+  // if user is not logged in send to main page
   checkLoggedIn() {
     if(this.isLoggedIn == false) {
       this.router.navigate(['main'])

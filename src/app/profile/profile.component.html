@@ -1,4 +1,5 @@
 <div *ngIf="this._userService.isLoggedIn == true; else this._userService.checkLoggedIn()">
+    <!--  -->
     <div *ngIf="this._userService.favoritedMovies != false; else elseBlock">
         <h1 class="title">Your Favorites</h1>
         <div class="cards">
@@ -24,6 +25,7 @@
             </div>
         </div>
     </div>
+    <!-- Displays if user has no favorites. see line 2. -->
     <ng-template #elseBlock>
         <h1 class="title">Your Favorites</h1>   
         <h3 class="title">*You do not have any favorites yet*</h3>
