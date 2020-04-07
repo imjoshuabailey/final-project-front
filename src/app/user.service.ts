@@ -18,6 +18,7 @@ export class UserService {
   isLoggedIn = false;
   firstName: string;
 
+  // creates new user in database
   registerUser(userCredentials) {
     return this._http.post(`${this.backendUrl}${this.appUserUrl}`, userCredentials).subscribe((res: any) => {
       sessionStorage.setItem('token', res.token);
@@ -30,6 +31,7 @@ export class UserService {
     })
   };
 
+  // logs user in and creates token
   loginUser(userCredentials) {
     return this._http.post(`${this.backendUrl}${this.loginUrl}`, userCredentials).subscribe((res: any) => {
       console.log("res:", res)
@@ -43,6 +45,7 @@ export class UserService {
     })
   };
 
+  // creates new favorite in database
   newFavorite(selectedFavorite) {
     let userId = sessionStorage.getItem('userId')
     console.log("selectedFavorite", selectedFavorite)
@@ -51,8 +54,9 @@ export class UserService {
       this.goToProfile();
     })
   }
-  // "http://localhost:3000/api/appUsers/5e7990ff43ef17539e2ae000/favorites"
+ 
 
+  // returns the logged in user's favorites
   listFavorites() {
     let userId = sessionStorage.getItem('userId')
     return this._http.get(`${this.backendUrl}${this.appUserUrl}${userId}/favorites`).subscribe((res: any) => {
@@ -60,6 +64,7 @@ export class UserService {
     })
   }
 
+  // deletes selected database
   deleteFavorite(movieId) {
     let userId = sessionStorage.getItem('userId') 
     return this._http.delete(`${this.backendUrl}${this.appUserUrl}${userId}/favorites/${movieId}`).subscribe((res: any) => {
@@ -69,7 +74,7 @@ export class UserService {
     })
   }
 
-  // navigates to 
+  // navigates to main page
   goToDash() {
     this.router.navigate(['main'])
   }
@@ -82,7 +87,7 @@ export class UserService {
   // if user is not logged in send to main page
   checkLoggedIn() {
     if(this.isLoggedIn == false) {
-      this.router.navigate(['main'])
+      this.goToDash()
     }
   }
 }
