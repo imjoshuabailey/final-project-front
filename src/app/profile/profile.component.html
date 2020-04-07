@@ -1,21 +1,31 @@
 <div *ngIf="this._userService.isLoggedIn == true; else this._userService.checkLoggedIn()">
-    <h1 class="title">Your Favorites</h1>
-    <div class="cards">
-        <div class="clr-row">
-            <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let item of this._movieService.selectedMovies">
-                <div  *ngIf="currentUser == item.userId" class="card">
-                    <div class="card-block">
-                        <div class="card-img">
-                            <img class="img" src="{{this._movieService.imageUrl + item.imageUrl}}" alt="No image available">
+    <div *ngIf="this._userService.favoritedMovies != false; else elseBlock">
+        <h1 class="title">Your Favorites</h1>
+        <div class="cards">
+            <div class="clr-row">
+                <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let movie of this._userService.favoritedMovies">
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="card-img">
+                                <img class="img" src="{{this._movieService.imageUrl + movie.imageUrl}}" alt="No image available">
+                            </div>
+                            <div class="card-title cards">
+                                <br>
+                                <a title="{{movie.movieTitle}}">{{movie.movieTitle}}</a>
+                            </div>
+                            <div class="card-footer foot">
+                                <button class="btn btn-sm btn-link" (click)="delete(movie.id)">
+                                    <clr-icon shape="times-circle"></clr-icon> Delete Favorite
+                                </button>
+                            </div>
                         </div>
-                        <div class="card-title cards">
-                            <br>
-                            <a title="{{item.movieTitle}}">{{item.movieTitle}}</a>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <ng-template #elseBlock>
+        <h1 class="title">Your Favorites</h1>   
+        <h3 class="title">*You do not have any favorites yet*</h3>
+    </ng-template>
 </div>

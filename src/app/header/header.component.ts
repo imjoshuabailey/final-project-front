@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
 
   viewPopMovies() {
     this._movieService.getPopular()
+    this._userService.goToDash()
   }
 
   movieSearch() {

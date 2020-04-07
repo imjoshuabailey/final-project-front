@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,11 @@ export class UserService {
 
   constructor(private _http: HttpClient, private router: Router) { }
 
+  favoritedMovies: any = false;
   backendUrl: string = "http://localhost:3000/api/";
   appUserUrl: string = "appUsers/"
   loginUrl: string = "appUsers/login"
+  
   isLoggedIn = false;
   firstName: string;
 
@@ -34,7 +37,7 @@ export class UserService {
       sessionStorage.setItem('userId', res.userId);
       this.firstName = res.userData.firstName;
       this.isLoggedIn = true;
-      this.goToDash();
+      this.goToProfile();
     }, err => {
         alert("incorrect email or passwrod")
     })
@@ -44,8 +47,25 @@ export class UserService {
     let userId = sessionStorage.getItem('userId')
     console.log("selectedFavorite", selectedFavorite)
     console.log("userId", userId)
-    return this._http.post(`${this.backendUrl}/favorites`, selectedFavorite).subscribe((res: any) => {
+    return this._http.post(`${this.backendUrl}${this.appUserUrl}${userId}/favorites`, selectedFavorite).subscribe((res: any) => {
       this.goToProfile();
+    })
+  }
+  // "http://localhost:3000/api/appUsers/5e7990ff43ef17539e2ae000/favorites"
+
+  listFavorites() {
+    let userId = sessionStorage.getItem('userId')
+    return this._http.get(`${this.backendUrl}${this.appUserUrl}${userId}/favorites`).subscribe((res: any) => {
+      this.favoritedMovies = res
+    })
+  }
+
+  deleteFavorite(movieId) {
+    let userId = sessionStorage.getItem('userId') 
+    return this._http.delete(`${this.backendUrl}${this.appUserUrl}${userId}/favorites/${movieId}`).subscribe((res: any) => {
+      this.listFavorites()
+      console.log("delete res", res)
+      console.log("new favorites", this.favoritedMovies)
     })
   }
 

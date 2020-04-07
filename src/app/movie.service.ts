@@ -13,18 +13,15 @@ export class MovieService {
   baseUrl: string = "https://api.themoviedb.org"
   imageUrl: string = "https://image.tmdb.org/t/p/w500"
   selectedMovies: any;
-  favoritedMovies: any;
+  firstLoad = false;
   genres: any;
   selectedGenre: any;
   
-
-  // getMovies() {
-  //   return this._http.get(`${this.baseUrl}${this._keysService.api_key}`);
-  // }
   getPopular(){
     return this._http.get(`${this.baseUrl}/3/movie/popular?api_key=${this._keysService.api_key}&language=en-US&page=1`).subscribe((res: any) => {
       this.selectedMovies = res.results;
       this.selectedGenre = "Popular Movies"
+      this.firstLoad = true;
       console.log('popular movies', this.selectedMovies)
     }, err => {
       //handle errors
@@ -48,17 +45,13 @@ export class MovieService {
 
   searchMovies(query) {
     return this._http.get(`${this.baseUrl}/3/search/movie?api_key=${this._keysService.api_key}&language=en-US&query=${query}&page=1&include_adult=false`).subscribe((res: any) => {
-      
+      this._userService.goToDash();
       this.selectedMovies = res.results;
       this.selectedGenre = "Searched results for: " + query;
       console.log("query", this.selectedMovies)
     })
   }
 
-  listFavorites() {
-    return this._http.get(`${this._userService.backendUrl}/favorites`).subscribe((res: any) => {
-      this.selectedMovies = res
-    })
-  }
+  
 
 }

@@ -13,7 +13,9 @@ export class MainComponent implements OnInit {
   constructor(public _movieService: MovieService, public _userService: UserService) { }
 
   ngOnInit(): void {
+    if(this._movieService.firstLoad === false) {
     this.popMovies();
+    }
   }
 
   favorite = {

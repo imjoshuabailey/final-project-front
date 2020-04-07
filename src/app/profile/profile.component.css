@@ -1,3 +1,13 @@
+.cards {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
 .title {
     text-align: center;
+}
+
+.foot {
+    text-align: right;
 }

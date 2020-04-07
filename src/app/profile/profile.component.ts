@@ -19,7 +19,11 @@ export class ProfileComponent implements OnInit {
   
 
   viewFavorites() {
-    this._movieService.listFavorites()
+    this._userService.listFavorites()
+  }
+
+  delete(movieId) {
+    this._userService.deleteFavorite(movieId)
   }
 
 }
