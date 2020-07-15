@@ -10,6 +10,8 @@ export class MovieService {
 
   constructor(public _http: HttpClient, private _keysService: KeysService, private _userService: UserService) { }
 
+  
+
   baseUrl: string = "https://api.themoviedb.org"
   imageUrl: string = "https://image.tmdb.org/t/p/w500"
   selectedMovies: any;
@@ -19,6 +21,7 @@ export class MovieService {
   
   // returns a list of most popular movies
   getPopular(){
+
     return this._http.get(`${this.baseUrl}/3/movie/popular?api_key=${this._keysService.api_key}&language=en-US&page=1`).subscribe((res: any) => {
       this.selectedMovies = res.results;
       this.selectedGenre = "Popular Movies"

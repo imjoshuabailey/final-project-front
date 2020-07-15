@@ -14,7 +14,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     if(this._movieService.firstLoad === false) {
-    this.popMovies();
+      this.popMovies();
     }
   }
 

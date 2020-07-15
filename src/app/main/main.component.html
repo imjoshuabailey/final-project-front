@@ -1,17 +1,17 @@
 
 <!-- Clarity design systems cards -->
 
-<h1 class="title" *ngIf="this._userService.isLoggedIn === false">**Login to search for your favorite movies**</h1>
+<h1 class="title" *ngIf="_userService.isLoggedIn === false">**Login to search for your favorite movies**</h1>
 
-<h1 class="title">{{this._movieService.selectedGenre}}</h1>
+<h1 class="title">{{_movieService.selectedGenre}}</h1>
 <br>
 <div class="cards">
     <div class="clr-row">
-        <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let movie of this._movieService.selectedMovies">
+        <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let movie of _movieService.selectedMovies">
             <div class="card">
                 <div class="card-block" >
                     <div class="card-img">
-                       <img class="img" src="{{this._movieService.imageUrl + movie.poster_path}}" alt="No image available">
+                       <img class="img" src="{{_movieService.imageUrl + movie.poster_path}}" alt="No image available">
                     </div>
                     <div class="card-title cards">
                         <br>
@@ -19,7 +19,7 @@
                     </div>
                     
                 </div>
-                <div *ngIf="this._userService.isLoggedIn === true" class="card-footer">
+                <div *ngIf="_userService.isLoggedIn === true" class="card-footer">
                     <button class="btn btn-sm btn-link" (click)="favoriteButton(movie.title, movie.poster_path, movie.id)"><clr-icon shape="star"></clr-icon> Add to Favorites</button>
                 </div>
             </div>

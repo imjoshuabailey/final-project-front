@@ -11,8 +11,8 @@
         <div class="header-nav">
             <a *ngIf="this._userService.isLoggedIn === true" class="nav-link nav-text" (click)="browseButton()">Browse</a>
             <form *ngIf="this._userService.isLoggedIn === true" class="search">
-                    <a (click)="movieSearch()"><clr-icon shape="search"></clr-icon></a>
-                    <input  id="search_input" type="text" name="search_input" placeholder="Search for keywords..." [(ngModel)]="form.search">
+                    <a class="nav-link nav-text" (click)="movieSearch()"><clr-icon shape="search"></clr-icon></a>
+                    <input  id="search_input" type="text" name="search_input" placeholder="Search for a movie..." [(ngModel)]="form.search">
             </form>
         </div>
         <div class="header-actions">

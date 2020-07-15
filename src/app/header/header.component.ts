@@ -43,7 +43,12 @@ export class HeaderComponent implements OnInit {
   }
 
   movieSearch() {
-    this._movieService.searchMovies(this.form.search)
+    if(this.form.search != null){
+        this._movieService.searchMovies(this.form.search)
+        this.form.search = null
+    }else{
+      this._movieService.getPopular()
+    }
   }
 
 }
