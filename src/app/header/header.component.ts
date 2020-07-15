@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
         this._movieService.searchMovies(this.form.search)
         this.form.search = null
     }else{
-      this._movieService.getPopular()
+      alert("please enter a movie title to search")
     }
   }
 
