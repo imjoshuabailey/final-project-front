@@ -21,11 +21,7 @@ export class MainComponent implements OnInit {
   currentId = null
 
   favorite = {
-    movieTitle: null,
-    imageUrl: null,
-    thirdPartyMovieId: null,
     movieData: null,
-    userId: null,
   }
   
 
@@ -34,12 +30,8 @@ export class MainComponent implements OnInit {
   }
 
   favoriteButton(movie) {
-    this.favorite.movieTitle = movie.title;
-    this.favorite.imageUrl = movie.poster_path;
-    this.favorite.thirdPartyMovieId = movie.id;
     this.favorite.movieData = movie;
-    this.currentId = sessionStorage.getItem('userId')
     console.log("your favorite", movie)
-    this._userService.newFavorite(this.favorite, this.currentId)
+    this._userService.newFavorite(this.favorite)
   }
 }
