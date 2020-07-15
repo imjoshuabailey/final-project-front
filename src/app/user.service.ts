@@ -46,11 +46,11 @@ export class UserService {
   };
 
   // creates new favorite in database
-  newFavorite(selectedFavorite) {
+  newFavorite(selectedFavorite, currentId) {
     let userId = sessionStorage.getItem('userId')
     console.log("selectedFavorite", selectedFavorite)
     console.log("userId", userId)
-    return this._http.post(`${this.backendUrl}${this.appUserUrl}${userId}/favorites`, selectedFavorite).subscribe((res: any) => {
+    return this._http.post(`${this.backendUrl}${this.appUserUrl}${userId}/favorites`, selectedFavorite, currentId).subscribe((res: any) => {
       this.goToProfile();
     })
   }

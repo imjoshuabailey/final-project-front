@@ -8,11 +8,11 @@
                     <div class="card">
                         <div class="card-block">
                             <div class="card-img">
-                                <img class="img" src="{{this._movieService.imageUrl + movie.imageUrl}}" alt="No image available">
+                                <img class="img" src="{{this._movieService.imageUrl + movie.movieData.poster_path}}" alt="No image available">
                             </div>
                             <div class="card-title cards">
                                 <br>
-                                <a title="{{movie.movieTitle}}">{{movie.movieTitle}}</a>
+                                <a title="{{movie.title}}">{{movie.movieData.title}}</a>
                             </div>
                             
                         </div>
