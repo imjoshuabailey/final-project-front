@@ -51,4 +51,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  logout() {
+    let tkn = sessionStorage.getItem('token')
+    console.log("token is", tkn)
+    this._userService.logoutUser(tkn);
+    }
+
 }

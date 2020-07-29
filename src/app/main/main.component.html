@@ -7,13 +7,13 @@
 <br>
 <div class="cards">
     <div class="clr-row">
-        <div class="clr-col-lg-2 clr-col-md-8 clr-col-12" *ngFor="let movie of _movieService.selectedMovies">
+        <div class="clr-col-lg-3 clr-col-md-8 clr-col-10" *ngFor="let movie of _movieService.selectedMovies">
             <div class="card">
                 <div class="card-block" >
                     <div class="card-img">
                        <img class="img" src="{{_movieService.imageUrl + movie.poster_path}}" alt="No image available">
                     </div>
-                    <div class="card-title cards">
+                    <div class="title card-title cards">
                         <br>
                         <a title="{{movie.title}}">{{movie.title}}</a>
                     </div>

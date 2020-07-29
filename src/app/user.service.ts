@@ -14,7 +14,7 @@ export class UserService {
   backendUrl: string = "http://localhost:3000/api/";
   appUserUrl: string = "appUsers/"
   loginUrl: string = "appUsers/login"
-  
+  logoutUrl: string = "appUsers/logout"
   isLoggedIn = false;
   firstName: string;
 
@@ -37,6 +37,7 @@ export class UserService {
       console.log("res:", res)
       sessionStorage.setItem('token', res.token);
       sessionStorage.setItem('userId', res.userId);
+      console.log(sessionStorage.getItem("token"));
       this.firstName = res.userData.firstName;
       this.isLoggedIn = true;
       this.goToProfile();
@@ -44,6 +45,14 @@ export class UserService {
         alert("incorrect email or passwrod")
     })
   };
+
+  //logs user out
+  logoutUser(token) {
+    return this._http.post(`${this.backendUrl}${this.logoutUrl}`, `Authorization: ${sessionStorage.getItem('token')}`).subscribe((res: any) => {
+      this.isLoggedIn = false;
+      this.goToDash();
+    })
+  }
 
   // creates new favorite in database
   newFavorite(selectedFavorite) {
