@@ -21,6 +21,7 @@ export class UserService {
   // creates new user in database
   registerUser(userCredentials) {
     return this._http.post(`${this.backendUrl}${this.appUserUrl}`, userCredentials).subscribe((res: any) => {
+      console.log("regester res returns", res)
       sessionStorage.setItem('token', res.token);
       sessionStorage.setItem('userId', res.userId);
       this.firstName = res.firstName;
@@ -42,6 +43,7 @@ export class UserService {
       this.isLoggedIn = true;
       this.goToProfile();
     }, err => {
+
         alert("incorrect email or passwrod")
     })
   };
